@@ -1,0 +1,491 @@
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb}
+
+\begin{document}
+ 
+\title{Representation Theory of Finite Groups}
+\author{}
+\date{}
+\maketitle
+
+\section*{Chapter 3}
+
+\subsection*{A note on Proposition 3.2.4}
+
+Proposition 3.2.4 states that any representation is equivalent to a unitary one. The proof, however, constructs a new inner product instead of changing the representation, and it may not be immediately obvious that this is equivalent to finding a unitary representation under the standard scalar product $\langle\cdot,\cdot\rangle$.\\
+To show that it is equivalent, consider the vector space $V$ we constructed the new inner product $(\cdot,\cdot)$ on, and consider an orthonormal set of basis vectors $b_1,\dots,b_n$ under the new scalar product, so
+\begin{equation*}
+    (b_i,b_j) = \delta_{ij}
+\end{equation*}
+(We can always construct such a basis by e.g. taking any basis and applying Gram-Schmidt-Orthogonalization using $(\cdot,\cdot)$.)\\
+Taking coordinates with respect to this basis yields the map $T: V \longrightarrow \mathbb{C}^n$ with $T(b_i) = e_i$, so we can now calculate (with $v,w \in V, v_i = (v,b_i), w_i = (w,b_i) \in \mathbb{C}$):
+
+\begin{equation*}
+    \begin{split}
+        (v,w) &= (\sum_{i=1}^n (v,b_i) \cdot b_i, \sum_{i=1}^n (w,b_i) \cdot b_i)\\
+        &= (\sum_{i=1}^n v_i b_i, \sum_{i=1}^n w_i b_i)\\
+        &= \sum_{i=1}^n v_i (b_i, \sum_{j=1}^n w_j b_j)\\
+        &= \sum_{i=1}^n \sum_{j=1}^n v_j \overline{w_j} (b_i, b_j)\\
+        &= \sum_{i=1}^n \sum_{j=1}^n v_i \overline{w_j} \delta_{ij}\\
+        &= \sum_{i=1}^n  v_i \overline{w_j}\\
+        &= \langle v,w \rangle
+    \end{split}
+\end{equation*}
+has exactly the same values as the standard scalar product on the coordinates with respect to B.
+
+\section*{Chapter 4}
+
+\subsection*{4.1}
+
+Linearity: $ST(au + bv) = S(aTu + bTv) = a(STu) + b(STv)$ \\
+Homomorphicity: $ST\varphi = S\psi T = \rho ST$
+
+\subsection*{4.2}
+
+By proposition 4.3.4 characters of equivalent representations are identical.
+So w.l.o.g. let $\varphi$ be unitary. Then it follows that
+$$
+\chi_\varphi (g^{-1})
+= \sum_{i=1}^{n} \varphi_{ii} (g^{-1})
+= \sum_{i=1}^{n} \overline{\varphi_{ii} (g)}
+= \overline{\chi_\varphi (g)}
+$$
+
+\subsection*{4.3}
+
+By definition $\varphi(a) = \mathrm{Hom}_G(\varphi, \varphi)$ for all $a \in Z(G)$. The result then follows from Schur's lemma, which exactly says that $\varphi(a) = \lambda I$.
+
+\subsection*{4.4}
+
+Substitute $h = g^{-1}x$ for some $x$.
+
+\subsection*{4.5.1}
+
+We show that $\chi_Y$ is a representation. It then immediately follows that it is a character, since there is no practical difference between a one-dimensional representation and its character. \\
+For any $u, v \in (\mathbb{Z}/2\mathbb{Z})^m$ it holds that
+
+\begin{equation*}
+    \begin{split}
+        \chi_Y(u)\chi_Y(v) &= (-1)^{|\alpha(u) \cap Y|} (-1)^{|\alpha(v) \cap Y|} \\
+        &= (-1)^{|\alpha(uv) \cap Y|} \\
+        &= \chi_Y(uv)
+    \end{split}
+\end{equation*}
+
+\subsection*{4.5.2}
+
+We identify $GL_1(\mathbb{C})$ with $\mathbb{C}^*$.
+Let's start with the group $\mathbb{Z}/2\mathbb{Z}$. Its only two representations, let's name them $\chi$ and $\chi'$, are $\chi(\cdot) = 1$, and $\chi'(0) = 1$ and $\chi'(1) = -1$. Since $|\mathbb{Z}/2\mathbb{Z}| = 2$, there are no other representations by corollary 4.3.10. \\
+From proposition 4.5.1 is then follows that $(\mathbb{Z}/2\mathbb{Z})^m$ has representations $\varphi$ that are products of $\chi$ and $\chi'$, or more concrete $\varphi(v) = \prod_{i = 1}^{m} \chi_i(v_i)$, where each $\chi_i$ equals either $\chi$ or $\chi'$. For such a $\varphi$ we define now $Y$ to be the set $\{i \mid \chi_i = \chi'\}$. This gives us that $\prod_{i = 1}^{m} \chi_i(v_i) = \prod_{i \in Y} \chi'(v_i) = \prod_{i \in Y} (-1)^{v_i} = (-1)^{\alpha(v) \cap Y}$. These are again all possible representations.
+
+\subsection*{4.5.3}
+
+Trivial, as $(-1)*(-1) = 1$.
+
+\subsection*{4.6}
+
+Both $\mathrm{sgn}$ and $\chi$ are irreducible. $\chi$ by definition and $\mathrm{sgn}$ obviously so. Therefore by the first orthogonality relations $\mathrm{sgn}$ and $\chi$ are orthogonal, i.e. $\langle \chi, \mathrm{sgn} \rangle = 0$. Plugging in the definition of the inner product and using the fact that $\mathrm{sgn}$ only outputs real values we get
+$$
+\langle \chi, \mathrm{sgn} \rangle = \frac{1}{|G|} \sum_{g \in G} \chi(g) \: \overline{\mathrm{sgn}(g)} = \frac{1}{|G|} \sum_{g \in G} \chi(g) \: \mathrm{sgn}(g) = 0
+$$
+Multiplying both sides in the last equality by $|G|$ gives the desired result.
+
+\subsection*{4.7.1}
+
+We need to verify $\tau_g \cdot \tau_h = \tau_{gh}$.\\
+Multiplication of two $A,B \in GL(V)$ is equivalent to the composition of the maps they represent:
+\begin{equation*}
+    \begin{split}
+        (\tau_g \cdot \tau_h) (A) &= (\tau_g \circ \tau_h) (A)\\
+        &= \tau_g (\tau_h (A))\\
+        &= \tau_g (\rho_h A \varphi_h^T)\\
+        &= \rho_g \rho_h A \varphi_h^T \varphi_g^T\\
+        &= \rho_g \rho_h A (\varphi_g \varphi_h)^T\\
+        &= \rho_{gh} A \varphi_{gh}^T\\
+        &= \tau_{gh} (A)
+    \end{split}
+\end{equation*}
+
+\subsection*{4.7.2}
+
+Calculate the $(i,j)$th entry of $A E_{kl} B$ for any matrices $A,B$:
+\begin{equation*}
+    \begin{split}
+        (A E_{kl} B)_{ij} &= \sum_{m,n} A_{im} (E_{kl})_{mn} B_{nj}\\
+        &= \sum_{m,n} A_{im} \delta_{km} \delta_{ln} B_{nj}\\
+        &= A_{ik} B_{lj}
+    \end{split}
+\end{equation*}
+Applying this to $A=\rho(g)$ and $B=\varphi^T(g)$ yields:
+\begin{equation*}
+    \begin{split}
+        \tau_g E_{kl} &= \rho_g E_{kl} \varphi_g^T\\
+        &= \sum_{i,j} (\rho_g E_{kl} \varphi_g^T)_{ij} \cdot E_{ij}\\
+        &= \sum_{i,j} \rho_{ik}(g) \varphi_{lj}^T(g) E_{ij}\\
+        &= \sum_{i,j} \rho_{ik}(g) \varphi_{jl}(g) E_{ij}
+    \end{split}
+\end{equation*}
+
+\subsection*{4.7.3}
+
+The main problem here is that $\chi_\tau(g) = \mathrm{Tr}(\tau(g))$ is a trace of a map from matrices to matrices. The trace is the sum over all the diagonal entries of the map, which are the coefficients the basis vectors appear in their own images with. Using the formula from 3., this is just the coefficient of $E_{kl}$ in the expansion, so $\rho_{kk}(g) \varphi_{ll}(g)$. Summing these over all $k,l$ (since our basis vectors are all the $E_{kl}$, indexed by $k,l$) gives:
+
+\begin{equation*}
+    \begin{split}
+        \chi_\tau(g) &= \sum_{k,l} \rho_{kk}(g) \varphi_{ll}(g)\\
+        &= \left( \sum_{k} \rho_{kk}(g) \right) \left( \sum_{l} \varphi_{ll}(g) \right)\\
+        &= \chi_\rho(g) \chi_\varphi(g)
+    \end{split}
+\end{equation*}
+
+\subsection*{4.7.4}
+
+This follows immediately, as for any two representations $\rho$ and $\varphi$ we can construct the $\tau$ defined above, with character equal to $\chi_\tau(g) = \chi_\rho(g) \chi_\varphi(g)$.
+
+\subsection*{4.8.1}
+
+This follows immediately, as $\sigma(k) = k$ implies $\alpha_{kk}(\sigma) = 1$, otherwise $\alpha_{kk}(\sigma) = 0$.
+
+\subsection*{4.8.2}
+
+The identity in $S_3$ fixes all elements, three permutations each fix one element and two permutations fix no element. We calculate:
+\begin{equation*}
+\begin{split}
+\langle \chi_{\alpha}, \chi_{\alpha} \rangle
+&= \frac{1}{|S_3|} \sum_{\sigma \in S_3} \chi_{\alpha}(\sigma) \: \overline{\chi_{\alpha}(\sigma)} \\
+&= \frac{1}{|S_3|} \sum_{\sigma \in S_3} \chi_{\alpha}(\sigma)^2 \\
+&= \frac{1}{6} \left( 1 * 3^2 + 3 * 1^2 + 2 * 0^2 \right) \\
+&= 2
+\end{split}
+\end{equation*}
+
+\subsection*{4.9}
+
+Let $I$ denote the trivial representation and $d$ denote its degree. Since $\chi$ is non-trivial and therefore also not equivalent to I (as $\chi \sim I \Rightarrow \chi = TIT^{-1} \Rightarrow \chi = I$), it must be orthogonal to it by the first orthogonality relations. We calculate:
+
+\begin{equation*}
+\begin{split}
+\langle \chi, I \rangle
+&= \frac{1}{|G|} \sum_{g \in G} \chi(g) \: \overline{I(g)} \\
+&= \frac{1}{|G|} \sum_{g \in G} \chi(g) \: \overline{d} \\
+&= \frac{d}{|G|} \sum_{g \in G} \chi(g) \\
+&= 0
+\end{split}
+\end{equation*}
+
+Multiplying both sides of the last equality by $\frac{|G|}{d}$ gives the desired result.
+
+\subsection*{4.10}
+
+The contrapositive is easy to see. If $\psi \circ \varphi$ is not irreducible then $\psi$ is neither by the surjectivity of $\varphi$.
+
+\subsection*{4.12.1}
+
+Any non-trivial invariant subspace of $\rho$ would have to be one-dimensional and would therefore be an eigenspace. One can calculate that $\mathbb{C}(1, i)$ and $\mathbb{C}(1, -i)$ are the eigenspaces of $\rho(\pm \hat{\jmath})$, and that they are not invariant under $\rho(\pm \hat{\imath})$. Therefore $\rho$ has no invariant subspaces.
+
+\subsection*{4.12.2}
+
+From exercise 4.5 we know precisely which are the four inequivalent representations of $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$. Now we just compose each one with the function $\psi(a) = aN$ for $a \in Q$.
+By exercise 4.10 this gives us four inequivalent representations of $Q$.
+
+\subsection*{4.13}
+
+Our mappings are one-dimensional, so we identify $GL_1(\mathbb{C}) = \mathbb{C}^*$. We have $\rho(g^{-1}h^{-1}gh) = \rho(g^{-1})\rho(h^{-1})\rho(g)\rho(h) = \rho(h)\rho(h^{-1})\rho(g)\rho(g^{-1}) = \rho(hh^{-1}gg^{-1}) = \rho(e)$ for any $g, h \in G$. Therefore $\rho(G') = \rho(e)$, i.e. they are constant on $G'$ and therefore also on cosets of $G'$. But this is exactly what the decomposition of $\rho$ into $\psi \circ \varphi$ means.
+
+\subsection*{4.14}
+
+$L_g \neq I$ is obvious. Now if all $\varphi_g$ were equal to $I$, then $L_g$ were equal to $I$, which cannot be. So at least one $\varphi_g$ must be not equal to $I$.
+
+\subsection*{4.15.1}
+
+This is equivalent to exercise 4.7.3 except that $\varphi$ is now not only transposed but also conjugated.
+
+\subsection*{4.15.2}
+
+-
+
+
+
+\pagebreak
+
+\section*{Chapter 5}
+
+\subsection*{5.1}
+
+\begin{equation*}
+\begin{split}
+a * b(x) &= \sum_{y \in G} a(xy^{-1}) b(y) \\
+  &= \sum_{y^{-1}x \in G} a(x(y^{-1}x)^{-1}) b(y^{-1}x) \\
+  &= \sum_{y \in G} a(y)b(y^{-1}x)
+\end{split}
+\end{equation*}
+
+\subsection*{5.6}
+
+\begin{equation*}
+\begin{split}
+\frac{1}{n} \langle \widehat{a}, \widehat{b} \rangle
+&= \frac{1}{n} \frac{1}{n} \sum_{\chi \in \widehat{G}}
+    \widehat{a}(\chi) \overline{\widehat{b}(\chi)} \\
+&= \frac{1}{n^2} \sum_{\chi \in \widehat{G}} \sum_{g \in G} a(g) \overline{\chi(g)} \sum_{h \in G} \overline{b(h)} \chi(h) \\
+&= \frac{1}{n^2}  \sum_{g \in G} \sum_{h \in G} a(g) \overline{b(h)} \sum_{\chi \in \widehat{G}} \overline{\chi(g)} \chi(h) \\
+&= \frac{1}{n^2}  \sum_{g \in G} \sum_{h \in G} a(g) \overline{b(h)} \cdot n \delta_{gh} \\
+&= \frac{1}{n}  \sum_{g \in G} a(g) \overline{b(g)} \\
+&= \langle a, b \rangle
+\end{split}
+\end{equation*}
+
+
+\subsection*{5.7}
+
+As $a$ and $b$ are functions in $L(G)$, they can be written as a linear combination of the orthonormal basis $\{ \sqrt{d_k} \varphi_{ij}^{(k)}\}_{ijk}$. We write out $\langle a, b \rangle$ in this way:
+
+\begin{align*}
+    \langle a, b \rangle &=
+    \langle \sum_{ijk} \langle a, \sqrt{d_k} \varphi_{ij}^{(k)} \rangle \sqrt{d_k} \varphi_{ij}^{(k)}, \sum_{i'j'k'} \langle b, \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle \\
+    &= \sum_{ijk} \sum_{i'j'k'} \langle \langle a, \sqrt{d_k} \varphi_{ij}^{(k)} \rangle \sqrt{d_k} \varphi_{ij}^{(k)}, \langle b, \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle \\
+    &= \sum_{ijk} \sum_{i'j'k'} \langle a, \sqrt{d_k} \varphi_{ij}^{(k)} \rangle \overline{ \langle b, \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle } \langle \sqrt{d_k} \varphi_{ij}^{(k)}, \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle \\
+    &= \sum_{ijk} \sum_{i'j'k'} \sqrt{d_{k} d_{k'}} \langle a, \varphi_{ij}^{(k)} \rangle \overline{ \langle b, \varphi_{i'j'}^{(k')} \rangle } \langle \sqrt{d_{k}} \varphi_{ij}^{(k)}, \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle
+\end{align*}
+
+\noindent
+Now observe that due to the vectors being elements of an orthonormal basis that the right-most inner product $\langle \sqrt{d_{k}} \varphi_{ij}^{(k)} \sqrt{d_{k'}} \varphi_{i'j'}^{(k')} \rangle$, equals $1$ only if $i = i'$, $j = j'$ and $k = k'$, zero otherwise. We therefore ignore zero-cases and simplify:
+
+\begin{align*}
+    \langle a, b \rangle &=
+    \sum_{ijk} d_k \langle a, \varphi_{ij}^{(k)} \rangle \overline{ \langle b, \varphi_{ij}^{(k)} \rangle } \\
+    &= \frac{1}{n^2} \sum_{ijk} d_k \ n \langle a, \varphi_{ij}^{(k)} \rangle n \overline{ \langle b, \varphi_{ij}^{(k)} \rangle } \\
+    &= \frac{1}{n^2} \sum_{ijk} d_k \ \widehat{a}(\varphi_{ij}^{(k)}) \overline{ \widehat{b}(\varphi_{ij}^{(k)}) } \\
+    &= \frac{1}{n^2} \sum_{k} d_k \sum_{ij} \widehat{a}(\varphi_{ij}^{(k)}) \overline{ \widehat{b}(\varphi_{ij}^{(k)}) }
+\end{align*}
+
+\noindent
+Now it should be clear that we're close to our goal. Personally I find it clearer to work backwards and instead write out the trace $\mathrm{Tr}[\widehat{a}(\varphi^{(k)}) \widehat{b}(\varphi^{(k)})^{*}]$.
+
+\begin{align*}
+    \mathrm{Tr}[\widehat{a}(\varphi^{(k)}) \widehat{b}(\varphi^{(k)})^{*}]
+    &= \sum_i \left( \widehat{a}(\varphi^{(k)}) \widehat{b}(\varphi^{(k)})^{*} \right)_{ii} \\
+    &= \sum_i \left( \sum_j \widehat{a}(\varphi^{(k)})_{ij} \widehat{b}(\varphi^{(k)})_{ji}^{*} \right) \\
+    &= \sum_i \left( \sum_j \widehat{a}(\varphi^{(k)})_{ij} \overline{ \widehat{b}(\varphi^{(k)})_{ij} } \right) \\
+    &= \sum_{ij} \widehat{a}(\varphi_{ij}^{(k)}) \overline{ \widehat{b}(\varphi_{ij}^{(k)}) }
+\end{align*}
+
+\noindent
+All that is left to do is to plug this into our equation from before to see that we're done:
+
+\begin{align*}
+    \langle a, b \rangle &=
+    \frac{1}{n^2} \sum_{k} d_k \mathrm{Tr}[\widehat{a}(\varphi^{(k)}) \widehat{b}(\varphi^{(k)})^{*}]
+\end{align*}
+
+\subsection*{5.10}
+It is clear that $\{\lambda I_n \mid \lambda \in \mathbb{C}\} \subseteq Z(M_n(\mathbb{C}))$. Let us fix an element $A \in Z(M_n(\mathbb{C}))$ and prove the reverse inclusion. First consider the matrices $E_i$ that have a $1$ at entry $ii$ and zeros otherwise. Then $E_i A$ is the matrix with the same $i$'th row as $A$ and zeros otherwise and $A E_i$ is the matrix with the same $i$'th column as $A$ and zeros otherwise. As both matrices are assumed to be equal, $A$ must be diagonal. It remains to show that all diagonal entries of $A$ must be equal. For this, consider the permutation matrices $\varphi(\sigma_{i,j})$ where $\varphi$ is the standard representation of $S_n$ and $\sigma_{i,j} \in S_n$ is the permutation that switches $i$ and $j$. Then $\varphi(\sigma_{i,j}) A$ is the matrix obtained from exchanging the $i$'th and $j$'th row of $A$ and $A \varphi(\sigma_{i,j})$ is the matrix obtained from exchanging the $i$'th and $j$'th column of $A$ (see for example Lemma 9.1.9 from the book). Again, both matrices are assumed to be equal and hence, $A_{ii} = (\varphi(\sigma_{i,j}) A)_{ji} = (A \varphi(\sigma_{i,j}))_{ji} = A_{jj}$. As $i$ and $j$ were arbitrary, we conclude that there exists $\lambda \in \mathbb{C}$ such that $A = \lambda I_n$.
+
+
+\subsection*{5.11}
+
+As $f$ is a function in $Z(L(G))$, it can be written as a linear combination of the $\chi$'s, namely $f = \langle f, \chi_1 \rangle \chi_1 + ... + \langle f, \chi_s \rangle \chi_s$. We have that
+\begin{align*}
+    \widehat{f}(\varphi^{k})_{ij} &=
+    \sum_{g \in G} f(g) \overline{\varphi^{(k)}_{ij}(g)} \\
+    &= \sum_{g \in G} \left( \sum_{t = 1}^{s} \langle f, \chi_t \rangle \chi_t(g) \right) \overline{\varphi^{(k)}_{ij}(g)} \\
+    &= \sum_{t = 1}^{s} \langle f, \chi_t \rangle \sum_{g \in G} \chi_t(g) \overline{\varphi^{(k)}_{ij}(g)} \\
+    &= \sum_{t = 1}^{s} \langle f, \chi_t \rangle \ n \langle \chi_t, \varphi^{(k)}_{ij} \rangle \\
+\end{align*}
+\noindent
+Note that since $\chi_t(g) = \mathrm{Tr}(\varphi^{(t)}(g)) = \sum_\ell \varphi^{(t)}_{\ell \ell}(g)$, we can use the Schur orthogonality relations to see that the inner product $\langle \chi_t(g), \varphi^{(k)}_{ij} \rangle$ evaluates to $\frac{1}{d_k}$ only if $t = k$ and $i = j$, otherwise it is zero.\\
+Therefore the whole sum above evaluates to zero except if $t = k$ and $i = j$, in which case we get
+
+\begin{align*}
+    \widehat{f}(\varphi^{k})_{ij} &= \langle f, \chi_k \rangle \ n \frac{1}{d_k}
+\end{align*}
+which is what we wanted to show.
+
+\pagebreak
+
+\section*{Chapter 6}
+
+\subsection*{6.1}
+
+Let $\varphi \in Aut(F)$. Since automorphisms always map the identity element to itself, we have $\varphi (0) = 0$ and $\varphi (1) = 1$.
+From there it follows for $n \in \mathbb{N}$ that $\varphi(n) = \varphi(1) + ... + \varphi(1) = n \varphi(1) = n$. That $\varphi(n) = n$ holds actually extends to any $n \in \mathbb{Z}$, as $0 = \varphi(n + (-n)) = \varphi(n) + \varphi(-n) = n + \varphi(-n)$, i.e. $\varphi(-n) = -n$.\\
+Now let $m \in \mathbb{Z}$ $n \in \mathbb{N}$. We have $\varphi(\frac{m}{n}) + ... + \varphi(\frac{m}{n}) = n \varphi(m) = nm$, i.e. $\varphi(\frac{m}{n}) = \frac{m}{n}$.\\
+This actually proves something stronger than we actually wanted to show, namely that for all $q \in \mathbb{Q}: \varphi(q) = q$.
+
+\subsection*{6.2.1}
+
+We know that $|G| = 39 = 3*13 = d_1^2 + ... + d_n^2$. Since each $d_i$ divides $|G|$, $d_i$ is either 1 or 3. Furthermore the number $m$ of degree one representation also divides $|G|$. As G is not abelian, $m$ is not 39. Furthermore since $|G| - m = d_{m+1}^2 + ... + d_n^2$ and since the RHS is divisible by $3^2 = 9$, the only possibility left for $m$ is 3.
+
+\subsection*{6.2.1}
+
+In 6.2.1 we saw that $|G| = d_1^2 + ... + d_n^2 = 3*1^2 + 4*3^2$.\\
+So by corollary 4.4.8 $|Cl(G)| = 7$.
+
+\subsection*{6.3}
+
+We quickly solve 6.3.1 and 6.3.2 together.\\
+$|G| = 21 = 3*7$ and again $d_i$ is either 1 or 3.\\
+The only possibility for $m$ is 3, as only then $|G| - m$ divides $3^2$.\\
+We then have that $|Cl(G)| = 5$.
+
+\subsection*{6.4}
+
+todo
+
+\subsection*{6.5}
+
+If $g \in ker \varphi$, then $\varphi(g) = I$ and $\chi(g) = d$.
+If $\chi(g) = d$ and $\lambda_1 ... \lambda_n$ are the eigenvalues of $\chi(g)$, then by assumption $\lambda_1 + ... + \lambda_n = d$. But by lemma 6.3.1 this only holds if $\lambda_1 = ... = \lambda_n$, which gives that each $\lambda_i = 1$.
+
+\subsection*{6.6.1}
+
+$\mathbb{Z}[\alpha]$ is closed under addition and multiplication and therefore contains all powers of $\alpha$ and their sums and products with elements from $\mathbb{Z}$.
+
+\subsection*{6.6.2}
+
+
+
+\pagebreak
+
+\section*{Chapter 7}
+
+\subsection*{7.1}
+
+Obviously the orbits cover $X$, as every element $x \in X$ is contained in the orbit $G \cdot x$, as $\sigma_e(x) = x$. So it remains to be proven that all orbits are either disjoint or equal. If two orbits, say $G \cdot x$ and $G \cdot y$, are not disjoint, then they share an element $z$. By definition this means that there exist $g, h \in G$ such that $\sigma_g(x) = z = \sigma_h(y)$. Since $\sigma$ is a homomorphism, it follows that $\sigma_{h^{-1}g}(x) = \sigma_{h^{-1}}( (\sigma_g(x) ) = \sigma_{h^{-1}} (z) = y$. Therefore $y \in G \cdot x$ and $G \cdot y \subseteq G \cdot x$. By symmetry $G \cdot x \subseteq G \cdot y$ and the orbits are therefore equal.
+
+\subsection*{7.2}
+
+Observe that if $\sigma_g(x) = x$ and $\sigma_h(x) = y$ then $\sigma_{h g h^{-1}}(y) = y$. \\
+Now assume (1), that is (using the orbit notation) $G_x \cdot z = G$ for any $z \in G$. \\
+Since $\sigma$ was assumed to be transitive, there exists a $h$ such that $\sigma_h(x) = y$ for any $y$. Then ${h G_x h^{-1} \subseteq G_y}$, as we've seen before. But now we have that for any $z$ its orbit $G_y \cdot z$ is at least the orbit ${h G_x h^{-1} \cdot z}$ and since left multiplication (here by $h$) and right multiplication (here by $h^{-1}$) are bijections, we have that ${h G_x h^{-1} \cdot z = G_x \cdot z = G}$, and so $G_y \cdot z = G$. This proves (2). \\
+Now assume (2). We want to prove (3), that is for any $x, x'$ and $y, y'$ there exists a $g \in G$ such that $\sigma_g(x) = y$ and $\sigma(x') = y'$. From (2) we know that there exists an $h \in G_x$ such that $\sigma_h(x') = y'$ and also there exists an $h' \in G_{x'}$ such that $\sigma_{h'}(x) = y$. It then follows that $\sigma_{hh'}$ fulfills (3). \\
+That (3) implies (1) is easy to see, as by definition you can find a $g \in G$ that satisfies both $\sigma_g(x) = x$ and $\sigma_g(y) = z$ for any $x,y$ \& $z$.
+
+
+\subsection*{7.10}
+
+The idea of the proof is that we can either ask for a $g$ how many $x$'s does it fix, or we can ask for an $x$ how many $g$'s fix it. Over all of $G$ and $X$ the total number of such relationships is either way the same.
+
+\begin{equation*}
+\begin{split}
+    \frac{1}{|G|} \sum_{g \in G} |\mathrm{Fix}(g)|
+    &= \frac{1}{|G|} \sum_{x \in X} |G_x| \\
+    &= \frac{1}{|G|} \sum_{x \in X} \frac{|G|}{|G \cdot x|} \\
+    &= \sum_{x \in X} \frac{1}{|G \cdot x|}
+\end{split}
+\end{equation*}
+\\
+Now notice that summing up over a single orbit gives $1$, so over all orbits this evaluates to $m$.
+\\
+An additional note: The second equality uses the orbit-stabilizer theorem. Since all elements in $G_x$ give the same result on $x$ (namely $\sigma_{G_x}(x) = x$), so do all elements in any coset of $G_x$ (say $\sigma_{aG_x}(x) = y$). This means that we can count the elements of $G$ by by going over the whole orbit $G \cdot x$ and counting for each $x$ how many group-elements does it get fixed by (namely $|G_x|$). This gives the orbit-stabilizer theorem: $|G| = |G_x||\mathcal O_x|$.
+
+\subsection*{7.11}
+
+Let $\delta_g$ be the indicator function of $g \in G$, that is $\delta_g(g) = 1$ and $\delta_g(h) = 0$ for $h \neq g$. We know that $\{\delta\}_{g \in G}$ is a basis for $L(G)$, so we write our $f \in L(G)$ as a linear combination $\sum_g a_g \delta_g$. We can now verify that $\Lambda$ is a representation. Let $a, b \in G$
+
+\begin{align*}
+    \Lambda_{ab}(f)(h) &= f(b^{-1} a^{-1} h) \\
+    &= \Lambda_{a}(f(b^{-1} \cdot ))(h) \\
+    &= \Lambda_{a} \Lambda_{b} f(h)
+\end{align*}
+
+\noindent
+Yea... I don't think the notation is there to explain what I'm doing. Just imagine $\Lambda_b$ is moving the coefficients $a_g$ around, from $a_g$ to $a_{b^{-1}g}$.
+
+
+
+\pagebreak
+
+\section*{Chapter 8}
+
+\subsection*{8.1}
+
+First write out a general element of $B \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} B$:
+\begin{align*}
+    \begin{pmatrix} a & b \\ 0 & c \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} d & e \\ 0 & f \end{pmatrix} &= \begin{pmatrix} a & b \\ 0 & c \end{pmatrix} \begin{pmatrix} 0 & f \\ d & e \end{pmatrix} \\
+    &= \begin{pmatrix} bd & af+be \\ cd & ce \end{pmatrix}
+\end{align*}
+where $ac \neq 0$ and $df \neq 0$. \\
+Now consider a general $\begin{pmatrix} w & x \\ y & z \end{pmatrix} \in G$. If $y=0$ (and then $wz \neq 0$ due to invertibility), this is in $B$, so now consider the case $y \neq 0$. Then we can choose for example $a=1$, $b=\frac{w}{y}$, $c=1$, $d=y$, $e=z$, $f=x-\frac{wz}{y}$ to write our matrix in the above form. \\
+So any general invertible matrix is either in $B$ or in $B \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} B$. \\
+Now for the second part: consider the matrix $A=\begin{pmatrix} x & 1 \\ 1 & 0 \end{pmatrix}$, and calculate its product with a general element of $B$:
+\begin{align*}
+    \begin{pmatrix} x & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} a & b \\ 0 & c \end{pmatrix}  &= \begin{pmatrix} ax & bx+c \\ a & b \end{pmatrix}
+\end{align*}
+We can see that the ratio of the top-left to the bottom-left elements is unchanged under multiplication with elements of $B$. It follows immediately that all the (infinitely many) different $A$-matrices are in different cosets of B, and so B must have infinitely many cosets.
+
+\subsection*{8.3}
+
+We want to use Mackey's irreducibility criterion. As $H$ is a normal subgroup, for any $g \in G$ it holds that $g^{-1}Hg = H$, so the irreducibility criterion reduces to proving that $\mathrm{Res}^H_H \chi$ and $\mathrm{Res}^H_H \chi^s$ are disjoint. Note that $\chi^s(H) = H$, so not only does $\mathrm{Res}^H_H \chi = \chi$ obviously hold, but also $\mathrm{Res}^H_H \chi^s = \chi^s$ holds. Furthermore by assumption we have that $s^{-1} h s \neq h$ for any $h \in H$ as long as $s \notin H$. Using that $\chi$ maps to roots of unity we have that
+
+\begin{align*}
+    \langle \chi, \chi^s \rangle &= \frac{1}{|H|} \sum_{h \in H} \chi(h) \overline{\chi(s^{-1} h s)} \\
+    &= \frac{1}{|H|} \sum_{m = 0}^{k-1} \chi(a^m) (\chi(s^{-1} a^m s))^{-1} \\
+    &= \frac{1}{|H|} \sum_{m = 0}^{k-1} \chi(a^m) \chi(s^{-1} a^{-m} s) \\
+    &= \frac{1}{|H|} \sum_{m = 0}^{k-1} \chi(a^m s^{-1} a^m s) \\
+    &= \frac{1}{|H|} \sum_{m = 0}^{k-1} \chi(a^{nm}) \\
+    &= \frac{1}{|H|} \sum_{m = 0}^{k-1} e^{2\pi i nm/k} \\
+    &= 0
+\end{align*}
+
+\noindent
+where the second equality follows from $\overline{e^{ix}} = e^{-ix}$ and $n$ is not zero. The fact that the sum $S = \zeta_n^0 + ... + \zeta_n^{n-1}$ equals zero comes from the fact that $S = \zeta_n S$, as multiplying by $\zeta_n$ just permutes the summands.
+
+\subsection*{8.6}
+
+Let $\chi$ be the character of $\varphi$, and $\chi^s$ that of $\varphi^s$. Now just calculate (using $N = s^{-1}Ns$, since N is a normal subgroup):
+\begin{align*}
+    \langle \chi^s, \chi^s \rangle &= \frac{1}{|N|} \sum_{g \in N} \chi(s^{-1} g s) \overline{\chi(s^{-1} g s)} \\
+    &= \frac{1}{|N|} \sum_{h \in Ns} \chi(s^{-1} h) \overline{\chi(s^{-1} h)} \\
+    &= \frac{1}{|N|} \sum_{g \in s^{-1}Ns} \chi(g) \overline{\chi(g)} \\
+    &= \frac{1}{|N|} \sum_{g \in N} \chi(g) \overline{\chi(g)} \\
+    &= \langle \chi, \chi \rangle
+\end{align*}
+So in particular $\langle \chi^s, \chi^s \rangle = 1 \iff \langle \chi, \chi \rangle = 1$, so $\chi^s$ is irreducible if and only if $\chi$ is irreducible.
+
+\subsection*{8.8.2}
+
+Consider the kernel of the representation $\mathrm{ker}(\varphi)$. We know that as a kernel of a homomorphism, it must be a normal subgroup of $G$. But $G$ only has itself and $\{1\}$ as normal subgroups. So we get two cases: \\
+If $\mathrm{ker}(\varphi) = G$, then we have $\varphi = I$, which is clearly a direct sum of $\mathrm{deg}(\varphi)$ copies of the trivial representation. \\
+Else $\mathrm{ker}(\varphi) = \{1\}$ is trivial, in which case the homomorphism $\varphi$ must be injective.
+
+\subsection*{8.9.1 \& 2}
+
+This is Algebra 101
+
+\subsection*{8.9.3}
+
+Let $m$ be the number of orbits of $H$ on $G/H$. It then follows that
+
+\begin{align*}
+    \mathrm{rank}(\sigma) &= \langle \chi_{\Tilde{\sigma}}, \chi_{\Tilde{\sigma}} \rangle \\
+    &= \langle \mathrm{Ind}^G_H \chi_1, \chi_{\Tilde{\sigma}} \rangle \\
+    &= \langle \chi_1, \mathrm{Res}^G_H \chi_{\Tilde{\sigma}} \rangle \\
+    &= \langle \chi_1, \chi_{\mathrm{Res}^G_H  \Tilde{\sigma}} \rangle \\
+    &= m
+\end{align*}
+
+\noindent
+where the last equality comes from propositions 7.2.7 and 7.2.8, using them in the same way as in the proof of Burnside's lemma.
+
+\subsection*{8.9.4}
+
+$G$ is 2-transitive iff $\mathrm{rank}(\sigma) = 2$ iff the number of orbits of $H$ on $G/H$ is 2 iff $H$ is transitive on $G/H \setminus H$ (as one orbit of $H$ is already the coset $H \in G/H$)
+
+\subsection*{8.10}
+
+From example 8.2.2 we know that the permutation representation $\widetilde{\sigma}$ has character $\chi = \mathrm{Ind}_H^G \chi_1 (g)$, with $\chi_1$ the character of the trivial representation on the subgroup $H=\{1\}$ of $G$.\\
+Now Frobenius reciprocity gives
+\begin{align*}
+    \langle \chi_\rho, \chi \rangle &= \langle \chi_\rho, \mathrm{Ind}_H^G \chi_1 \rangle \\
+    &= \langle \mathrm{Res}_H^G \chi_\rho, \chi_1 \rangle \\
+    &= \sum_{g \in H} \chi_\rho (g) \overline{\chi_1 (g)} \\
+    &= \chi_\rho (1) \overline{\chi_1 (1)} \\
+    &= \mathrm{Tr}(I) \\
+    &= \mathrm{deg}(\rho)
+\end{align*}
+
+\end{document}

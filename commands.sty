@@ -1,0 +1,68 @@
+\ProvidesPackage{commands}
+
+%% font family, utf8 and language...
+\usepackage[utf8]{inputenc}
+%\usepackage[dutch]{babel}
+\usepackage[english]{babel}
+\usepackage{mathrsfs}
+\usepackage[usenames, dvipsnames]{xcolor}
+%\usepackage{manfnt}
+
+
+%% math packages
+\usepackage{amsmath, amsthm, amssymb}  % Some math symbols
+\usepackage{mathtools}
+\usepackage{commath}
+
+%% graphic packages
+\usepackage{tikz, pgfplots, tikz-cd}
+\pgfplotsset{compat = 1.15}
+\usepackage{graphicx}
+\usepackage[margin = 1.2in]{geometry} %bepaalt margins
+\usepackage{enumitem} % voor labeling enum
+\usepackage{microtype}
+
+
+%% Text shortcuts
+\newcommand{\ts}{\textsuperscript}
+
+
+%% math operators & standard math symbols
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Bb}[1]{\mathbb{#1}}
+\newcommand{\Cat}{\mathcal{C}}
+
+\renewcommand{\:}{\colon}
+\newcommand{\st}{\colon}
+\newcommand{\defi}{\coloneqq}
+\newcommand\diff{\mathop{}\!\mathrm{d}}
+%\renewcommand{\qed}{\hfill\mancube}
+
+
+\DeclareMathOperator{\ggd}{ggd}
+\DeclareMathOperator{\kgv}{kgv}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\orde}{orde}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\Sin}{Sin}
+\DeclareMathOperator{\Cos}{Cos}
+\DeclareMathOperator{\Tan}{Tan}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Ab}{Ab}
