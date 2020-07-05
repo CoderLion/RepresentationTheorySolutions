@@ -1,2 +1,2 @@
 # RepresentationTheorySolutions
-Solutions to Steinberg's Book "Representation Theory of Finite Groups"
+Solutions to Benjamin Steinberg's Book "Representation Theory of Finite Groups"
